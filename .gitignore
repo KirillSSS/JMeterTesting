@@ -1,0 +1,23 @@
+# JMeter result files
+*.jtl
+/results/
+**/results/
+**/result/
+
+# HTML reports
+**/report/
+**/report-output/
+
+# Local config files
+jmeter_path.conf
+*.properties
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml

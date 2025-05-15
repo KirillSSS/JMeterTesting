@@ -1,5 +1,5 @@
 @echo off
-REM Встанови шлях до JMeter (зміні на свій)
+REM Встановіть шлях до JMeter (зміні на свій)
 set JMETER_PATH=""
 
 set TEST_PLAN=".\TestPlan.jmx"

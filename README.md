@@ -92,7 +92,7 @@ set JMETER_PATH=""
 
 ```bash
 cd /шлях/до/бат-файлу
-run_test.bat
+StartTestPlan.bat
 ```
 
 #### 3. Перегляньте метрики

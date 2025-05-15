@@ -49,7 +49,7 @@
 
 3. Натисніть кнопку **Start** (зелена стрілка)
 
-  ![image](https://github.com/user-attachments/assets/f2d06bff-97ab-4372-b832-edc9d86f081d)
+   ![image](https://github.com/user-attachments/assets/f2d06bff-97ab-4372-b832-edc9d86f081d)
 
 4. Перейдіть у браузері на:
    ```
@@ -59,7 +59,7 @@
    Авторизуйтесь через admin/admin
    і відкрийте дашборд з метриками
 
-  ![image](https://github.com/user-attachments/assets/2bdae964-136a-4018-900e-b8590efd37ca)
+   ![image](https://github.com/user-attachments/assets/2bdae964-136a-4018-900e-b8590efd37ca)
 
 ---
 
@@ -106,7 +106,7 @@ http://localhost:3000
 Авторизуйтесь через admin/admin
 Відкрийте дашборд, щоб переглянути результати тестування.
 
-  ![image](https://github.com/user-attachments/assets/fd280a2d-4229-4de1-afab-10773c828d54)
+   ![image](https://github.com/user-attachments/assets/fd280a2d-4229-4de1-afab-10773c828d54)
 
 ---
 

@@ -1,124 +1,124 @@
-# 📘 Інструкція запуску JMeter тесту з моніторингом через InfluxDB + Grafana
+# 📘 JMeter Test Execution Guide with InfluxDB + Grafana Monitoring
 
-## 🔧 Попередні умови
+## 🔧 Prerequisites
 
-- Наявні:
-  - `TestPlan.jmx` — тестовий план
-  - `Dataset.csv` — тестові дані
-  - Docker Compose файл для `InfluxDB` та `Grafana`
-  - Налаштований Grafana Dashboard та DataSource
-  - `StartTestPlan.bat` файл для запуску тесту
-  - Встановлений Apache JMeter
+You should have the following:
+
+- `TestPlan.jmx` — JMeter test plan  
+- `Dataset.csv` — test data  
+- Docker Compose file for `InfluxDB` and `Grafana`  
+- Preconfigured Grafana Dashboard and DataSource  
+- `StartTestPlan.bat` file to launch the test  
+- Apache JMeter installed  
 
 ---
 
-## 🧱 КРОК 1: Запуск InfluxDB та Grafana
+## 🧱 STEP 1: Launch InfluxDB and Grafana
 
-1. Перейдіть у директорію з Docker Compose:
+1. Navigate to the directory containing your Docker Compose file:
    ```bash
-   cd /шлях/до/вашого/docker-compose
+   cd /path/to/your/docker-compose
    ```
 
-2. Запустіть сервіси у фоновому режимі:
+2. Start the services in detached mode:
    ```bash
    docker compose up -d
    ```
 
    ![image](https://github.com/user-attachments/assets/6021cf92-21e6-4be1-9606-5f69292a1291)
 
-
-3. Перевірте, що `influxdb` і `grafana` запущені:
+3. Make sure `influxdb` and `grafana` containers are running:
    ```bash
    docker ps
    ```
 
 ---
 
-## ⚙️ КРОК 2: Запуск тесту
+## ⚙️ STEP 2: Run the Test
 
-### 🔹 ВАРІАНТ 1: Через інтерфейс JMeter
+### 🔹 OPTION 1: Using JMeter GUI
 
-1. Запустіть JMeter:
+1. Start JMeter:
    ```bash
-   cd /шлях/до/apache-jmeter/bin
+   cd /path/to/apache-jmeter/bin
    jmeter.bat
    ```
 
-2. Відкрийте тестовий план:
-   - **File** → **Open** → виберіть `TestPlan.jmx`
+2. Open your test plan:
+   - **File** → **Open** → select `TestPlan.jmx`
 
-3. Натисніть кнопку **Start** (зелена стрілка)
+3. Click the **Start** button (green arrow)
 
    ![image](https://github.com/user-attachments/assets/f2d06bff-97ab-4372-b832-edc9d86f081d)
 
-4. Перейдіть у браузері на:
+4. Open Grafana in your browser:
    ```
    http://localhost:3000
    ```
-   
-   Авторизуйтесь через admin/admin
-   і відкрийте дашборд з метриками
+   Log in with `admin` / `admin`  
+   and open the metrics dashboard
 
    ![image](https://github.com/user-attachments/assets/2bdae964-136a-4018-900e-b8590efd37ca)
 
 ---
 
-### 🔹 ВАРІАНТ 2: Через `StartTestPlan.bat` файл
+### 🔹 OPTION 2: Using `StartTestPlan.bat` file
 
-#### 1. Відредагуйте `StartTestPlan.bat` файл
+#### 1. Edit `StartTestPlan.bat`
 
-У файлі потрібно вказати шлях до JMeter:
+You need to set the path to your JMeter installation:
 
 ```bat
 @echo off
-REM Встановіть шлях до JMeter (зміні на свій)
+REM Set the path to JMeter (replace with your actual path)
 set JMETER_PATH=""
 ```
 
-Запуск відбувається командою:
+The test is launched using the command:
 ```bat
 %JMETER_PATH%\jmeter.bat -n -t %TEST_PLAN% -l %RESULTS_FOLDER%\results.jtl -e -o %RESULTS_FOLDER%\dashboard
 ```
 
-> 🔸 Пояснення параметрів:
-> - `-n` — запуск у non-GUI режимі
-> - `-t` — шлях до JMX тестового плану
-> - `-l` — файл для запису результатів (`.jtl`)
-> - `-j` — лог-файл JMeter
+> 🔸 Parameters explained:  
+> - `-n` — run in non-GUI mode  
+> - `-t` — path to the JMX test plan  
+> - `-l` — results output file (`.jtl`)  
+> - `-e -o` — generate HTML dashboard in output folder  
+> - `-j` — optional: path to the JMeter log file
 
-#### 2. Запустіть `StartTestPlan.bat` файл
+#### 2. Run `StartTestPlan.bat`
 
-Подвійним кліком або через термінал:
+Double-click it or run via terminal:
 
 ```bash
-cd /шлях/до/бат-файлу
+cd /path/to/batch-file
 StartTestPlan.bat
 ```
 
-#### 3. Перегляньте метрики
+#### 3. View metrics
 
-Перейдіть у браузері на:
+Open your browser and go to:
 
 ```
 http://localhost:3000
 ```
 
-Авторизуйтесь через admin/admin
-Відкрийте дашборд, щоб переглянути результати тестування.
+Log in with `admin` / `admin`  
+Open the dashboard to see the test results
 
    ![image](https://github.com/user-attachments/assets/fd280a2d-4229-4de1-afab-10773c828d54)
 
 ---
 
-## 🧹 Додатково (опціонально)
+## 🧹 Additional (Optional)
 
-### Зупинка контейнерів після тестування:
+### Stop containers after test completion:
 
 ```bash
 docker compose down -v
 ```
 
-### Перевірка метрик безпосередньо в InfluxDB (через CLI):
+### View raw metrics in InfluxDB via CLI:
 
 ```bash
 docker exec -it influxdb influx
@@ -126,26 +126,25 @@ docker exec -it influxdb influx
 
 ---
 
-## ✅ Очікуваний результат
+## ✅ Expected Result
 
-- Тестовий план `TestPlan.jmx` виконується з використанням `Dataset.csv`
-- Дані про виконання передаються в InfluxDB через Backend Listener
-- Grafana автоматично відображає метрики на дашборді
+- `TestPlan.jmx` runs using data from `Dataset.csv`  
+- Execution data is sent to InfluxDB via Backend Listener  
+- Grafana automatically displays metrics on the dashboard  
 
 ---
 
-## ⚠️ Можливі помилки при виконанні тестів
+## ⚠️ Possible Test Errors
 
-Під час виконання тестового плану деякі тести раз від разу можуть завершуватись з помилкою (не обов'язково). Це пов'язано з особливістю роботи API [https://petstore.swagger.io](https://petstore.swagger.io), яке використовує балансувальник навантаження (load balancer).
+During execution, some tests **may occasionally fail**. This is due to the behavior of the API at [https://petstore.swagger.io](https://petstore.swagger.io), which uses a **load balancer**.
 
-Через це:
-- Запити на створення, оновлення або видалення користувачів можуть потрапляти на різні бекенд-інстанси
-- Дані не синхронізуються між цими інстансами миттєво
-- Тест може виконати, наприклад, створення користувача на одному сервері, а перевірку чи видалення — на іншому, де такого користувача ще/вже немає
+As a result:
+- Requests for creating, updating, or deleting users may hit different backend instances
+- Data is **not synchronized instantly** between those instances
+- For example, the test may create a user on one server, and then try to check or delete it on another, where the user does not yet (or no longer) exist
 
-У результаті:
-- Отримуються відповіді з помилками типу `User not found`, `User already exists` тощо
-- Це **не є помилкою у вашому тесті**, а обмеженням API, що використовується для демонстрації
+This leads to:
+- Error responses like `User not found`, `User already exists`, etc.
+- These are **not actual test failures**, but a known **limitation of the demo API**
 
-> 🔍 Рішенням може бути використання власного стабільного тестового середовища з одним бекендом, якщо потрібні точні й повторювані результати.
-
+> 🔍 To ensure consistent and predictable test results, consider using your own dedicated test environment with a single backend instance.

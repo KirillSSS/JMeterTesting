@@ -1,0 +1,11 @@
+username,firstName,lastName,email,password,phone,updateFirstName,updateLastName
+kirillex,Kirill,Ivanov,kirillex@example.com,Xh8tYp93vL,380501234567,Maxim,Petrov
+techguru,Alex,Pavlov,alex.p@example.com,Kp7Tqz6YwV,380931234567,Dmitry,Sokolov
+cloudmaster,Anna,Kovalenko,anna.k@example.com,Zt5Xr9MwQp,380671234567,Olga,Stepanenko
+devwizard,Oleg,Sidorov,oleg.s@example.com,Fy2Kx8WzTq,380441234567,Sergey,Mikhailov
+scriptlord,Marina,Petrenko,marina.p@example.com,Jw5Yx3TqVp,380601234567,Yulia,Fedorova
+datagenius,Igor,Maksymov,igor.m@example.com,Qx2Zy6KpWt,380551234567,Vadim,Korneev
+automationpro,Natalia,Kozak,natalia.k@example.com,Xr7Wq2TzYp,380731234567,Elena,Vasilieva
+querymaster,Dmytro,Bondarenko,dmytro.b@example.com,Tp8Kz5XqWr,380821234567,Roman,Grigorenko
+helmhero,Sergiy,Vasylenko,sergiy.v@example.com,Zy3Tq9XpK8,380671234568,Victor,Klimov
+dockerwizard,Olga,Shevchenko,olga.s@example.com,Wp7Xq2KzT9,380921234567,Ekaterina,Zhukova
